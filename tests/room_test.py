@@ -20,3 +20,8 @@ class TestRoom(unittest.TestCase):
     def test_check_guest_into_room(self):
         self.room_1.check_guest_into_room(self.guest_1)
         self.assertEqual(1, self.room_1.check_guest_list())
+
+    def test_check_guest_out_of_room(self):
+        self.room_1.check_guest_into_room(self.guest_1)
+        self.room_1.check_guest_out_of_room(self.guest_1)
+        self.assertEqual(0, self.room_1.check_guest_list())
