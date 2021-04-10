@@ -10,3 +10,5 @@ class Guest:
             if song.song_name == self.favourite_song:
                 return f"Yeah! They have {self.favourite_song}, I'm going to sing that!"
         return "Aww, they don't have my favourite song."
+
+    
