@@ -4,3 +4,10 @@ class Guest:
         self.favourite_song = favourite_song
         self.wallet = wallet
         self.currently_singing = []
+
+    def check_if_favourite_song_present(self, room):
+        for song in room.song_library:
+            if song == self.favourite_song:
+                return f"Yeah! They have {self.favourite_song}, I'm going to sing that!"
+            else:
+                return "Aww, they don't have my favourite song."

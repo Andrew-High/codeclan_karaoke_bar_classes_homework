@@ -16,7 +16,7 @@ class TestGuest(unittest.TestCase):
     def test_guest_favourite_song(self):
         self.assertEqual("Killer Queen", self.guest_1.favourite_song)
 
-    def test_response_when_favourite_song_present_in_song_library(self, room):
+    def test_response_when_favourite_song_present_in_song_library(self):
         self.room_1.add_song_to_library(self.song_1)
         self.room_1.check_guest_into_room(self.guest_1)
-        self.assertEqual("Yeah! They have Killer Queen, I'm going to sing that!", self.check_if_favourite_song_present())
+        self.assertEqual("Yeah! They have Killer Queen, I'm going to sing that!", self.guest_1.check_if_favourite_song_present(self.room_1))

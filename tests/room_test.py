@@ -41,3 +41,6 @@ class TestRoom(unittest.TestCase):
     def test_guest_entry_fee_paid(self):
         self.room_1.check_guest_into_room(self.guest_1)
         self.assertEqual(20, self.guest_1.wallet)
+
+    def test_when_guest_doesnt_have_enough_in_wallet_for_entry_fee(self):
+        self.assertEqual("I'm sorry but you don't have enough money to pay the entry fee", self.room_1.check_guest_into_room(self.guest_6))
