@@ -17,8 +17,11 @@ class Room:
     def check_guest_into_room(self, guest):
         if self.check_guest_list() >= self.capacity:
             return "I'm sorry but this room is full, please find another room"
+        elif guest.wallet < 10:
+            return "I'm sorry but you don't have enough money to pay the entry fee"
         else:
             self.guest_list.append(guest)
+            guest.wallet -= 10
 
     def check_guest_out_of_room(self, guest):
         self.guest_list.remove(guest)

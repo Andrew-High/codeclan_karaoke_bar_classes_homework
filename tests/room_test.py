@@ -8,11 +8,12 @@ class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room_1 = Room("Lizard Lounge", 4)
         self.song_1 = Song("Killer Queen")
-        self.guest_1 = Guest("Freddie Mercury", "Killer Queen")
-        self.guest_2 = Guest("Paul McCartney", "Live and Let Die")
-        self.guest_3 = Guest("Axl Rose", "Sweet Child of Mine")
-        self.guest_4 = Guest("Jon Bon Jovi", "Livin' on a Prayer")
-        self.guest_5 = Guest("Michael Jackson", "Billie Jean")
+        self.guest_1 = Guest("Freddie Mercury", "Killer Queen", 30)
+        self.guest_2 = Guest("Paul McCartney", "Live and Let Die", 100)
+        self.guest_3 = Guest("Axl Rose", "Sweet Child of Mine", 10)
+        self.guest_4 = Guest("Jon Bon Jovi", "Livin' on a Prayer", 40)
+        self.guest_5 = Guest("Michael Jackson", "Billie Jean", 4000)
+        self.guest_6 = Guest("Annie Lennox", "Sweet Dreams", 5)
 
     def test_room_has_name(self):
         self.assertEqual("Lizard Lounge", self.room_1.room_name)
