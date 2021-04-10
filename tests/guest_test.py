@@ -9,6 +9,7 @@ from classes.drink import Drink
 class TestGuest(unittest.TestCase):
     def setUp(self):
         self.guest_1 = Guest("Freddie Mercury", "Killer Queen", 30)
+        self.guest_2 = Guest("Axl Rose", "Sweet Child of Mine", 10)
         self.room_1 = Room("Lizard Lounge", 4, 10)
         self.song_1 = Song("Killer Queen")
         self.bar_1 = Bar("The Squealing Pig")
@@ -30,3 +31,10 @@ class TestGuest(unittest.TestCase):
         self.bar_1.add_drink_to_stock((self.drink_1))
         self.guest_1.buy_drink(self.drink_1, self.bar_1, self.room_1)
         self.assertEqual(15, self.guest_1.wallet)
+
+    def test_customer_cant_buy_drink_from_bar(self):
+        self.room_1.check_guest_into_room(self.guest_2)
+        self.bar_1.add_drink_to_stock((self.drink_1))
+        self.guest_2.buy_drink(self.drink_1, self.bar_1, self.room_1)
+        self.assertEqual(0, self.guest_2.wallet)
+        self.assertEqual("We have Punk IPA in stock, there are 4 in stock", self.bar_1.check_if_drink_is_in_stock(self.drink_1))
