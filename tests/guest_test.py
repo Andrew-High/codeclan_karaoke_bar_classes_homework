@@ -27,5 +27,6 @@ class TestGuest(unittest.TestCase):
 
     def test_customer_can_buy_drink_from_bar(self):
         self.room_1.check_guest_into_room(self.guest_1)
-        self.guest_1.buy_drink(self.drink_1, bar_1)
+        self.bar_1.add_drink_to_stock((self.drink_1))
+        self.guest_1.buy_drink(self.drink_1, self.bar_1, self.room_1)
         self.assertEqual(15, self.guest_1.wallet)
