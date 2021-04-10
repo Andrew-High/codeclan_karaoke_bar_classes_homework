@@ -1,10 +1,11 @@
 class Room:
-    def __init__(self, room_name, capacity):
+    def __init__(self, room_name, capacity, room_charge):
         self.room_name = room_name
         self.capacity = capacity
+        self.room_charge = room_charge
         self.song_library = []
         self.guest_list = []
-
+        
     def check_song_library(self):
         return len(self.song_library)
 
@@ -21,7 +22,7 @@ class Room:
             return "I'm sorry but you don't have enough money to pay the entry fee"
         else:
             self.guest_list.append(guest)
-            guest.wallet -= 10
+            guest.wallet -= self.room_charge
 
     def check_guest_out_of_room(self, guest):
         self.guest_list.remove(guest)
