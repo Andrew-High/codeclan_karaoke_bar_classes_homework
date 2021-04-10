@@ -36,3 +36,7 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_guest_into_room(self.guest_3)
         self.room_1.check_guest_into_room(self.guest_4)
         self.assertEqual("I'm sorry but this room is full, please find another room", self.room_1.check_guest_into_room(self.guest_5))
+
+    def test_guest_entry_fee_paid(self):
+        self.room_1.check_guest_into_room(self.guest_1)
+        self.assertEqual(20, self.guest_1.wallet)
