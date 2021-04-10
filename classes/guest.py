@@ -7,7 +7,6 @@ class Guest:
 
     def check_if_favourite_song_present(self, room):
         for song in room.song_library:
-            if song == self.favourite_song:
+            if song.song_name == self.favourite_song:
                 return f"Yeah! They have {self.favourite_song}, I'm going to sing that!"
-            else:
-                return "Aww, they don't have my favourite song."
+        return "Aww, they don't have my favourite song."
