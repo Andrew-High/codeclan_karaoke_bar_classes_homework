@@ -5,6 +5,7 @@ class Room:
         self.room_charge = room_charge
         self.song_library = []
         self.guest_list = []
+        self.current_spend = 0
         
     def check_song_library(self):
         return len(self.song_library)
@@ -23,7 +24,11 @@ class Room:
         else:
             self.guest_list.append(guest)
             guest.wallet -= self.room_charge
+            self.current_spend += self.room_charge
 
     def check_guest_out_of_room(self, guest):
         self.guest_list.remove(guest)
+
+    def how_much_guests_have_spent(self):
+        return self.current_spend
 
