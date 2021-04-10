@@ -6,9 +6,13 @@ from classes.guest import Guest
 
 class TestRoom(unittest.TestCase):
     def setUp(self):
-        self.room_1 = Room("Lizard Lounge", 6)
+        self.room_1 = Room("Lizard Lounge", 4)
         self.song_1 = Song("Killer Queen")
         self.guest_1 = Guest("Freddie Mercury", "Killer Queen")
+        self.guest_2 = Guest("Paul McCartney", "Live and Let Die")
+        self.guest_3 = Guest("Axl Rose", "Sweet Child of Mine")
+        self.guest_4 = Guest("Jon Bon Jovi", "Livin' on a Prayer")
+        self.guest_5 = Guest("Michael Jackson", "Billie Jean")
 
     def test_room_has_name(self):
         self.assertEqual("Lizard Lounge", self.room_1.room_name)
@@ -25,3 +29,10 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_guest_into_room(self.guest_1)
         self.room_1.check_guest_out_of_room(self.guest_1)
         self.assertEqual(0, self.room_1.check_guest_list())
+
+    def test_guest_capacity_cannot_be_exceeded(self):
+        self.room_1.check_guest_into_room(self.guest_1)
+        self.room_1.check_guest_into_room(self.guest_2)
+        self.room_1.check_guest_into_room(self.guest_3)
+        self.room_1.check_guest_into_room(self.guest_4)
+        self.assertEqual("I'm sorry but this room is full, please find another room", self.room_1.check_guest_into_room(self.guest_5))

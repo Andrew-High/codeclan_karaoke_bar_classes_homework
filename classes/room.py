@@ -15,7 +15,10 @@ class Room:
         return len(self.guest_list)
     
     def check_guest_into_room(self, guest):
-        self.guest_list.append(guest)
+        if self.check_guest_list() >= self.capacity:
+            return "I'm sorry but this room is full, please find another room"
+        else:
+            self.guest_list.append(guest)
 
     def check_guest_out_of_room(self, guest):
         self.guest_list.remove(guest)
